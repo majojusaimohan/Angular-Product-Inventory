@@ -1,0 +1,126 @@
+                    <br><br>
+                    <div class="container"><div class="row-xs-12"><div class="col-md-9" >
+                    <div class="card card-outline-secondary">
+                        <div class="card-header">
+                            <h3 class="mb-0">Register</h3>
+                        </div>
+                        <div class="card-body">
+                            <form class="form" role="form"
+                            #registerform="ngForm" (ngSubmit)="onsubmit(registerform)"
+                            autocomplete="off">
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">First name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control"
+                                         type="text"
+                                          value=""
+                                          [(ngModel)]='model.firstname'
+                                         name="firstname"
+                                          required
+                                          #firstname
+                                          >
+                                         
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Last name</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control"
+                                         type="text" 
+                                         [(ngModel)]='model.lastname'
+                                         name="lastname"
+                                          required
+                                          
+                                        value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Email</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="email"
+                                        [(ngModel)]='model.email'
+                                        name="email"
+                                        email
+                                         required
+                                        value="">
+                                    </div>
+                                </div>
+                                
+                                
+                                
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Password</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" 
+                                        id="password"
+                                        type="password" 
+                                        [(ngModel)]='model.password'
+                                        name="password"
+                                        minlength="6"
+                                         required
+                                         #password
+                                        value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Confirm</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control"
+                                         type="password"
+                                         [(ngModel)]='model.conformpassword'
+                                         id='conformpassword'
+                                        name="conformpassword"
+                                        minlength="6"
+                                         required
+                                       #conformpassword
+                                         value="">
+                                    </div>
+                                    <p *ngIf="conformpassword !='' && password.value!=conformpassword.value " style="color: red;">Password and Confirm Password must be match</p>
+                                </div>
+                                
+
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Location</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="text" 
+                                        [(ngModel)]='model.location'
+                                        name="location"
+                                       
+                                         required
+                                         
+                                        value="">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label">Mobile No</label>
+                                    <div class="col-lg-9">
+                                        <input class="form-control" type="number"
+                                        [(ngModel)]='model.mobilenumber'
+                                        name="mobile"
+                                        minlength="1000000000"
+                                        pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                                        required
+                                        
+                                        value="">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-lg-3 col-form-label form-control-label"></label>
+                                    <div class="col-lg-9">
+                                        <input type="reset" class="btn btn-secondary" style="margin-right: 5px;" value="Reset">
+                                        <input type="submit"  [disabled]="!registerform.valid" class="btn btn-primary" value="Register">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+                <br><br>
+
+                <!-- <pre>{{registerform.value | json}}</pre> -->
+
+                

@@ -1,0 +1,122 @@
+<!-- <div class="container">
+    <div class="row">
+      <div class="col-md-3 mx-auto my-5" *ngFor="let card of cards">
+        <mdb-card>
+          <mdb-card-img [src]="card.img" alt="Card image cap">
+          </mdb-card-img>
+          <mdb-card-body>
+            <mdb-card-title>
+              <h4>{{card.title}}</h4>
+            </mdb-card-title>
+  
+            <mdb-card-text>
+              {{card.description}}
+            </mdb-card-text>
+  
+            <button mdbBtn color="primary">{{card.buttonText}}</button>
+          </mdb-card-body>
+        
+      </div>
+    </div>
+  </div> -->
+
+  <input
+        type="text"
+        class="form-control"
+        name="searchString"
+        placeholder="Type to search..."
+        [(ngModel)]="searchString"
+      />
+      <!-- |  filter : 'name' : searchString; let i = index -->
+   <div class="container">
+    <div class="row" >
+      
+  <!-- <div class="card col-md-3  mx-auto my-5 mt-3 " style="margin-left: 5px;"   *ngFor=" let p of products |  filter : 'name' : searchString; let i = index ">
+  <div class="card-body mt-3" > 
+    <h5 class="card-title">{{p.name}}</h5>
+    <p  class="card-text">{{p.discription}}</p>
+    <p class="card-text"> {{p.unit_price}}</p>
+    <p class="card-text"> {{p.quantity}}</p>
+    <p class="card-text">{{p.manufacturer}}</p>
+
+    <button type="button" [disabled]="status" style="margin: 5px;"class="btn btn-primary btn-sm ">Edit</button>
+
+    <button type="button" [disabled]="status" style="margin: 5px;" class="btn btn-danger btn-sm ">Delete</button>
+
+  </div>
+</div> -->
+
+
+  
+    <!-- <a class="dropdown-item" (click)="nametoggle()">Dropdown link</a>
+    <a class="dropdown-item" href="#">Dropdown link</a> -->
+
+
+    <div class="dropdown">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item"  (click)="togglefilter('Name')">Name</a>
+        <a class="dropdown-item" (click)="togglefilter('Description')" >Description</a>
+        <a class="dropdown-item"  (click)="togglefilter('Price')">Price</a>
+        <a class="dropdown-item" (click)="togglefilter('Quantity')" > Quantity</a>
+        <a class="dropdown-item"  (click)="togglefilter('Manufacturer')">Manufacturer</a>
+      </div>
+    </div> 
+<div class="table-responsive-sm " >
+
+<!--Table-->
+<table class="table table-striped w-auto"   >
+
+  <!--Table head-->
+  <thead>
+    <tr>
+      <th *ngIf='togglename'>Name</th>
+      <th *ngIf='toggledes' >Description</th>
+      <th *ngIf='toggleprice'>Price</th>
+      <th *ngIf='togglequantity'>Quantity</th>
+      <th *ngIf='toggleman'>Manufacturer</th>
+     
+    </tr>
+  </thead>
+  <!--Table head-->
+
+  <!--Table body-->
+  <tbody>
+    <tr class="table-info"  *ngFor=" let p of products |  filter : 'ProductName' : searchString; let i = index " [ngClass]="{'table-info' : i%2==0}">
+      <!-- <td>{{i}}</td> -->
+      <td  *ngIf='togglename'>{{p.ProductName}}</td>
+      <td *ngIf='toggledes'>{{p.ProductDescription}}</td>
+      <td *ngIf='toggleprice'>{{p.Price}}</td>
+      <td *ngIf='togglequantity'>{{p.quantity}}</td>
+      <td *ngIf='toggleman'>{{p.Manufacturer}}</td>
+      <td><button type="button"  class="btn btn-primary btn-sm "  (click)="productdetails(p.id)" >Details</button></td>
+      <td ><button type="button" 
+        
+        [disabled]="status"
+        
+        class="btn btn-primary btn-sm " (click)="editproduct(p.id)">Edit</button></td>
+
+      <td>  <button type="button" [disabled]="status"  (click)="deleteproduct(p.id)" class="btn btn-danger btn-sm ">Delete</button></td>
+      
+      
+    </tr>
+    
+  </tbody>
+  <!--Table body-->
+
+
+</table>
+</div>
+ </div>
+</div>
+
+
+
+
+
+
+
+
+
