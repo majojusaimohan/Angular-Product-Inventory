@@ -2,46 +2,38 @@
   "register": [
     {
       "id": 1,
-      "firstname": "Sai",
-      "lastname": "Majoju",
+      "firstname": "Ram",
+      "lastname": "Ramesh",
       "password": "123456",
-      "email": "saimohanmajoju@gmail.com",
-      "location": "aasffa",
-      "mobile": 9696523569
+      "email": "ram@example.com",
+      "location": "mumbai",
+      "mobile": 9632587445
     }
   ],
   "products": [
     {
-      "id": 1,
-      "ProductName": "dsdfs",
-      "ProductDescription": "dsds",
-      "Manufacturer": "sdd",
+      "ProductName": "fdertgggfg",
+      "ProductDescription": "sgfdssd",
+      "Manufacturer": "dsdsfds",
       "Price": 33,
-      "quantity": 22
+      "quantity": 22,
+      "id": 4
     },
     {
-      "id": 2,
-      "ProductName": "rgfdfgd",
-      "ProductDescription": "dfsdfs",
-      "Manufacturer": "dgfddf",
-      "Price": 44,
-      "quantity": 44
-    },
-    {
-      "id": 3,
       "ProductName": "ffgdfgd",
       "ProductDescription": "fdgfddf",
       "Manufacturer": "gghf",
       "Price": 56,
-      "quantity": 333
+      "quantity": 333,
+      "id": 5
     },
     {
-      "id": 4,
-      "ProductName": "fdertgg",
-      "ProductDescription": "sgfdssd",
-      "Manufacturer": "dsdsfds",
-      "Price": 33,
-      "quantity": 22
+      "id": 6,
+      "ProductName": "product 1",
+      "ProductDescription": "product discription 1",
+      "Manufacturer": "mancudftuerw",
+      "Price": 450,
+      "quantity": 50
     }
   ]
 }

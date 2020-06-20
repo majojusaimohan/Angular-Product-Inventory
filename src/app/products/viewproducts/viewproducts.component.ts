@@ -26,7 +26,14 @@ export class ViewproductsComponent implements OnInit {
 
   ngOnInit() {
 
+this.initialization();
+    
+  }
+  
 
+
+  initialization()
+  {
     this.productservice.fetchproducts().subscribe(
 
       data=>{
@@ -43,8 +50,8 @@ export class ViewproductsComponent implements OnInit {
       
       
     );
+
   }
-  
   togglefilter(filter: string){
     if(filter=='Name'){
 this.togglename=!this.togglename;}
@@ -61,22 +68,40 @@ if(filter=='Description'){
 
 
   editproduct( id:number ){
+
+
+    if(this.status){
+
+      this.route.navigate(['./login']);
+
+    }else{
     console.log(id);
 
     this.route.navigate(['addproduct',{'edit':id, 'type':'edit'}]);
-
+    }
 
 
 
   }
 
   deleteproduct(id:number)
-  {      this.productservice.deleteproduct(id).subscribe(
+
+  { 
+    if(this.status){
+
+      this.route.navigate(['./login']);
+
+    }
+    
+    else{
+    
+    this.productservice.deleteproduct(id).subscribe(
 
 
     ()=>{
       console.log("product deleted sucessfullly");
       alert("product deleted sucessfullly")
+      this.initialization();
       
 
     },
@@ -88,13 +113,23 @@ console.log(err)
 
   this.route.navigate(['/viewproducts'])
 
-  
+  }
 
 
   }
-  productdetails(id:number)
-  {      console.log(id);
+  productdetails(p: ProductModel)
+  {      console.log(p);
 
+
+    if(this.status){
+
+      this.route.navigate(['./login']);
+
+    }
+else{
+
+  this.route.navigate(['/productdetails',{'p':p }]);
+}
 
   }
 

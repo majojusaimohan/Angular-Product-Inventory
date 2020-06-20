@@ -32,7 +32,7 @@ loginbuttontext='Login';
       const password= authform.value.password;
 
 
-        console.log(authform);
+        
      
     
 
@@ -44,7 +44,7 @@ loginbuttontext='Login';
 
       }
 
-      this.loginbuttontext='Logout'
+      
 
 
     }

@@ -91,14 +91,14 @@
       <td *ngIf='toggleprice'>{{p.Price}}</td>
       <td *ngIf='togglequantity'>{{p.quantity}}</td>
       <td *ngIf='toggleman'>{{p.Manufacturer}}</td>
-      <td><button type="button"  class="btn btn-primary btn-sm "  (click)="productdetails(p.id)" >Details</button></td>
+      <td><button type="button"  class="btn btn-primary btn-sm "  (click)="productdetails(p)" >Details</button></td>
       <td ><button type="button" 
         
-        [disabled]="status"
+        
         
         class="btn btn-primary btn-sm " (click)="editproduct(p.id)">Edit</button></td>
 
-      <td>  <button type="button" [disabled]="status"  (click)="deleteproduct(p.id)" class="btn btn-danger btn-sm ">Delete</button></td>
+      <td>  <button type="button"   (click)="deleteproduct(p.id)" class="btn btn-danger btn-sm ">Delete</button></td>
       
       
     </tr>

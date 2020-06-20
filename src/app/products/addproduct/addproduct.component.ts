@@ -67,6 +67,7 @@ this.router.params.subscribe(
     else{
 
      this.buttontext='Add product';
+     
 
     }
   }
@@ -88,6 +89,7 @@ this.productservice.addproduct(addproductform);
         ()=>{
 
           alert("Product Updated sucessfully");
+          this.route.navigate(['/viewproducts']);
         },
         (err:any)=>{
           console.log(err);

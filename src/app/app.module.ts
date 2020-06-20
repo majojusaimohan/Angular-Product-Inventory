@@ -17,6 +17,7 @@ import { ProfileComponent } from './auth/profile/profile.component';
 import { ProductService } from './products/product.service';
 import { ViewproductsComponent } from './products/viewproducts/viewproducts.component';
 import { FilterPipe } from './filter.pipe';
+import { ProductdetailsComponent } from './products/productdetails/productdetails.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { FilterPipe } from './filter.pipe';
     RegisterComponent,
     ProfileComponent,
     ViewproductsComponent,
-    FilterPipe
+    FilterPipe,
+    ProductdetailsComponent
   ],
   imports: [
     FormsModule,
