@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ProductModel } from '../product.model';
 import { ProductService } from '../product.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { Router } from '@angular/router';
+import { Subject } from 'rxjs';
+import { EventEmitter } from 'protractor';
 
 
 @Component({
@@ -11,6 +13,17 @@ import { Router } from '@angular/router';
   styleUrls: ['./viewproducts.component.css']
 })
 export class ViewproductsComponent implements OnInit {
+
+
+  showModal : boolean= false;
+  public productname:string;
+  public manufacturer:string;
+  public productdiscription:string;
+  public price:string;
+  public quantity:number;
+  public id:number;
+  rating:number;
+  
   searchString: string="";
   status:boolean=true;
   products:ProductModel[];
@@ -19,6 +32,7 @@ export class ViewproductsComponent implements OnInit {
   toggleprice=true;
   togglequantity=true;
   toggleman=true;
+  productdetail= new Subject<any>();
   
   constructor( public productservice: ProductService,public auth: AuthService, public  route: Router) {
     
@@ -118,7 +132,7 @@ console.log(err)
 
   }
   productdetails(p: ProductModel)
-  {      console.log(p);
+  {      
 
 
     if(this.status){
@@ -128,10 +142,53 @@ console.log(err)
     }
 else{
 
-  this.route.navigate(['/productdetails',{'p':p }]);
+this.productname=p['ProductName'];
+this.productdiscription=p['ProductDescription'];
+              this.price=p['Price'];
+              this.quantity=p['quantity'];
+              this.manufacturer=p['Manufacturer'];
+              this.id=p['id'];
+              this.rating=p['viewdtimes']+1;
+              this.productservice.updaterating(p,this.id,this.rating).subscribe(
+
+                ()=>{
+        
+                  
+                 console.log("sucess")
+                },
+                (err:any)=>{
+                  console.log(err);
+                }
+        
+              )
+
+console.log(p);
+
+this.rating=0;
+  
+  // this.productservice.detail(p);
+
+  // this.route.navigate(['/productdetails']);
 }
 
   }
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
 
  
 

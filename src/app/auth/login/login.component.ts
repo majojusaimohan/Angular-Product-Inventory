@@ -12,10 +12,25 @@ import { NgForm } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
 loginbuttontext='Login';
+error=false;
+status:boolean;
+isloading=false;
 
-  constructor(public auth: AuthService) { }
+
+  constructor(public auth: AuthService) { 
+   
+  }
 
   ngOnInit() {
+    this.auth.loginstatus.subscribe(
+      data=>{
+          this.status=data;
+      }
+      
+          )
+
+
+         
     
   }
 
@@ -28,16 +43,23 @@ loginbuttontext='Login';
         return;
 
     }
+    this.isloading=true;
       const email=authform.value.email;
       const password= authform.value.password;
+      if(this.status)
+      {
+      this.error=true;}
 
 
-        
+      this.auth.login(email, password)
      
-    
+     
+     
+      
+      
 
       
-        this.auth.login(email, password)
+       
         
 
      

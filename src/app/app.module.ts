@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from "@angular/forms";
+import { ChartsModule } from 'ng2-charts'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +19,10 @@ import { ProductService } from './products/product.service';
 import { ViewproductsComponent } from './products/viewproducts/viewproducts.component';
 import { FilterPipe } from './filter.pipe';
 import { ProductdetailsComponent } from './products/productdetails/productdetails.component';
+import { CanDeactivateGuard } from './shared/CanComponentDeactivate.service';
+import { BarchartComponent } from './barchart/barchart.component';
+
+
 
 @NgModule({
   declarations: [
@@ -33,15 +38,20 @@ import { ProductdetailsComponent } from './products/productdetails/productdetail
     ProfileComponent,
     ViewproductsComponent,
     FilterPipe,
-    ProductdetailsComponent
+    ProductdetailsComponent,
+    BarchartComponent
+    
+    
+   
   ],
   imports: [
     FormsModule,
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule, 
+    ChartsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,CanDeactivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

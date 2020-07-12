@@ -7,6 +7,7 @@ import { Observable, Subject } from 'rxjs';
 export class ProductService{
     url: string= 'http://localhost:3000/products'
     editproductemited= new Subject();
+    productdetail= new Subject<ProductModel>();
 
   constructor(public http: HttpClient){}
 
@@ -26,7 +27,8 @@ export class ProductService{
                     "ProductDescription": addproductform.value.productdiscription,
                     "Manufacturer": addproductform.value.manufacturer,
                     "Price":addproductform.value.price,
-                    "quantity": addproductform.value.quantity
+                    "quantity": addproductform.value.quantity,
+                    "viewdtimes":0
 
                 }
                 ).subscribe(
@@ -83,7 +85,7 @@ return this.http.delete(this.url+'/'+id)
     }
 
 
-    updateproduct(addproductform: import("@angular/forms").NgForm,id:number){
+    updateproduct(addproductform: import("@angular/forms").NgForm,id:number,rating?:number){
 
       return this.http.put(this.url+'/'+id,
       {
@@ -91,10 +93,36 @@ return this.http.delete(this.url+'/'+id)
       "ProductDescription": addproductform.value.productdiscription,
       "Manufacturer": addproductform.value.manufacturer,
       "Price":addproductform.value.price,
-      "quantity": addproductform.value.quantity
+      "quantity": addproductform.value.quantity, 
+      "viewdtimes": rating
+      
       }
       );
           }
+
+
+        detail(p:ProductModel){
+            this.productdetail.next(p);
+
+        }
+
+
+
+
+        updaterating(p:ProductModel, id:number,rating:number){
+
+          return this.http.put(this.url+'/'+id,
+          {
+            "ProductName":p['ProductName'],
+            "ProductDescription": p['ProductDescription'],
+            "Manufacturer": p['Manufacturer'],
+            "Price":p['Price'],
+            "quantity": p['quantity'],
+          "viewdtimes": rating
+          
+          }
+          );
+              }
       
 
 }

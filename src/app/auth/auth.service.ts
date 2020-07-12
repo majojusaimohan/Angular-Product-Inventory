@@ -21,13 +21,16 @@ class RegisterModel {
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  loginstatus= new BehaviorSubject<boolean>(true);
+  // loginstatus= new BehaviorSubject<boolean>(true);
+  loginstatus= new BehaviorSubject<boolean>(false);
   profile= new Subject();
 
   Registeredusers: RegisterModel[];
   logineduser: RegisterModel;
 
-  login(email, password){
+  login(email, password)
+  {
+
 
        this.http.get<RegisterModel[]>('http://localhost:3000/register').subscribe
         
@@ -54,14 +57,14 @@ export class AuthService {
        
 
 
-    
          
   
       
       )
 
       
-     
+    
+      
       
     
 

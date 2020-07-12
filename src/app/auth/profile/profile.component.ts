@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
       data=>{
         console.log(data['mobile']);
         this.firstName=data['firstname'];
+        console.log(this.firstName)
         this.lastName=data['lastname'];
         this.mobilenumber=data['mobile'];
         this.location=data['location'];

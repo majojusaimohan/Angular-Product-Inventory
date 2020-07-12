@@ -30,21 +30,21 @@
       <!-- |  filter : 'name' : searchString; let i = index -->
    <div class="container">
     <div class="row" >
-      
-  <!-- <div class="card col-md-3  mx-auto my-5 mt-3 " style="margin-left: 5px;"   *ngFor=" let p of products |  filter : 'name' : searchString; let i = index ">
+       
+   <!-- <div class="card col-md-3  mx-auto my-5 mt-3 " style="margin-left: 5px;"   *ngFor=" let p of products |  filter : 'name' : searchString; let i = index ">
   <div class="card-body mt-3" > 
-    <h5 class="card-title">{{p.name}}</h5>
-    <p  class="card-text">{{p.discription}}</p>
-    <p class="card-text"> {{p.unit_price}}</p>
+    <h5 class="card-title">{{p.ProductName}}</h5>
+    <p  class="card-text">{{p.ProductDescription}}</p>
+    <p class="card-text"> {{p.Price}}</p>
     <p class="card-text"> {{p.quantity}}</p>
-    <p class="card-text">{{p.manufacturer}}</p>
-
+    <p class="card-text">{{p.quantity}}</p>
+<p class="card-text">{{p.Manufacturer}}</p>
     <button type="button" [disabled]="status" style="margin: 5px;"class="btn btn-primary btn-sm ">Edit</button>
 
     <button type="button" [disabled]="status" style="margin: 5px;" class="btn btn-danger btn-sm ">Delete</button>
 
   </div>
-</div> -->
+</div>  -->
 
 
   
@@ -57,7 +57,10 @@
         Filter
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <a class="dropdown-item"  (click)="togglefilter('Name')">Name</a>
+        <a class="dropdown-item"  (click)="togglefilter('Name')">Name </a> 
+                     
+
+        
         <a class="dropdown-item" (click)="togglefilter('Description')" >Description</a>
         <a class="dropdown-item"  (click)="togglefilter('Price')">Price</a>
         <a class="dropdown-item" (click)="togglefilter('Quantity')" > Quantity</a>
@@ -91,7 +94,12 @@
       <td *ngIf='toggleprice'>{{p.Price}}</td>
       <td *ngIf='togglequantity'>{{p.quantity}}</td>
       <td *ngIf='toggleman'>{{p.Manufacturer}}</td>
-      <td><button type="button"  class="btn btn-primary btn-sm "  (click)="productdetails(p)" >Details</button></td>
+      <td><button type="button" 
+        (click)="productdetails(p)"
+        class="btn btn-primary btn-sm "
+        data-toggle="modal" data-target="#exampleModal"
+        
+        >Details</button></td>
       <td ><button type="button" 
         
         
@@ -112,8 +120,57 @@
  </div>
 </div>
 
+<!-- Button trigger modal
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"    aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Product Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="card" style="width: 18rem;">
+   
+          <div class="card-body">
+            <h5 class="card-title">Details Of The Product</h5>
+            <p class="card-text"></p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item"  >Product Name: {{ productname }}</li>
+            <li class="list-group-item">Product Description:{{productdiscription}}</li>
+            <li class="list-group-item">Price: {{price}}</li>
+            <li class="list-group-item">Quantity: {{quantity}}</li>
+            <li class="list-group-item">Manufacturer: {{manufacturer}}</li>
+          </ul>
+          <div class="card-body">
+            <button type="button" 
+              class="btn btn-primary " data-dismiss="modal" (click)="editproduct(id)">Edit</button>      
+             <button type="button"   data-dismiss="modal" (click)="deleteproduct(id)" class="btn btn-danger  ">Delete</button>
+          </div>
+        </div> 
+      
+      
+      
+      </div>
+      <!-- <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div> -->
+    </div>
+  </div>
+</div>
 
 
+
+
+<!-- (click)="productdetails(p); exampleModal=p;" -->
 
 
 

@@ -7,6 +7,8 @@ import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './auth/profile/profile.component';
 import { ViewproductsComponent } from './products/viewproducts/viewproducts.component';
 import { ProductdetailsComponent } from './products/productdetails/productdetails.component';
+import { CanDeactivateGuard } from './shared/CanComponentDeactivate.service';
+
 
 
 const routes: Routes = [
@@ -15,8 +17,10 @@ const routes: Routes = [
   {path:'login',component: LoginComponent},
   {path:'register', component: RegisterComponent},
   {path:'profile',component: ProfileComponent},
-  {path:'addproduct',component: AddproductComponent}, {path:'addproduct/:type/:id',component: AddproductComponent}, {path:'viewproducts',component: ViewproductsComponent},
-  {path:'productdetails/:p',component: ProductdetailsComponent}
+  {path:'addproduct',component: AddproductComponent,canDeactivate: [CanDeactivateGuard]},
+   {path:'addproduct/:type/:id',component: AddproductComponent }, 
+   {path:'viewproducts',component: ViewproductsComponent},
+  {path:'productdetails',component: ProductdetailsComponent}
 ];
 
 @NgModule({

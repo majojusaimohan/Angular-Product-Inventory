@@ -13,12 +13,13 @@ export class AddproductComponent implements OnInit {
 
   buttontext='Add product';
   editingproduct: ProductModel[];
-  productname:string;
-  manufacturer:string;
-  productdiscription:string;
-  price:string;
-  quantity:number;
-  id:number;
+ public productname:string;
+ public manufacturer:string;
+ public productdiscription:string;
+ public price:string;
+ public quantity:number;
+ public id:number;
+  public raitng: number
 
   constructor(public productservice: ProductService, public route: Router, public router: ActivatedRoute) { }
 
@@ -51,6 +52,7 @@ this.router.params.subscribe(
                 this.price=elements['Price'];
                 this.quantity=elements['quantity'];
                 this.manufacturer=elements['Manufacturer'];
+                this.raitng=elements['viewdtimes']
 
               
               }
@@ -84,7 +86,7 @@ this.productservice.addproduct(addproductform);
     addproductform.reset();}
 
     else if(this.buttontext=="Update Product"){
-      this.productservice.updateproduct(addproductform,this.id).subscribe(
+      this.productservice.updateproduct(addproductform,this.id,this.raitng).subscribe(
 
         ()=>{
 

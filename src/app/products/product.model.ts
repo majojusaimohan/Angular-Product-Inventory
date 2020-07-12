@@ -4,6 +4,7 @@ discription:string;
 unit_price:number;
 quantity:number;
 manufacturer:string;
+viewtimes?: number
 
 
 constructor(name:string,
@@ -11,6 +12,7 @@ constructor(name:string,
     unit_price:number,
     quantity:number,
     manufacturer:string,
+    viewtimes?: number 
     
 ){}
 
